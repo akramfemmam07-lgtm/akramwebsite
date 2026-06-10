@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Pharmacien Sportif — Conseils & Antidopage</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-deep: #0B2D5E;
+    --blue-mid: #1A56A0;
+    --blue-light: #3B82C4;
+    --blue-pale: #EBF3FB;
+    --blue-accent: #2563EB;
+    --white: #FFFFFF;
+    --grey-light: #F4F7FB;
+    --grey-mid: #8FA3C0;
+    --grey-text: #4A5568;
+    --red-alert: #C0392B;
+    --orange-warn: #D97706;
+    --green-ok: #15803D;
+    --border: #D1E0F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--blue-deep);
+    background: var(--white);
+    line-height: 1.65;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--blue-deep);
+    text-decoration: none;
+  }
+
+  .nav-logo .cross {
+    width: 28px; height: 28px;
+    background: var(--blue-accent);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--grey-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-accent); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 60%, var(--blue-light) 100%);
+    color: white;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 60%;
+    height: 200%;
+    background: rgba(255,255,255,0.03);
+    transform: rotate(-15deg);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: #93C5FD;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    opacity: 0.85;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    color: var(--blue-deep);
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    flex-wrap: wrap;
+  }
+
+  .hero-stat strong {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: #93C5FD;
+  }
+
+  .hero-stat span {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    max-width: 120px;
+    display: block;
+  }
+
+  /* SECTIONS */
+  section { padding: 4rem 2rem; }
+
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--blue-deep);
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+  }
+
+  .section-sub {
+    color: var(--grey-text);
+    font-size: 1rem;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  /* CHECKLIST */
+  #checklist { background: var(--grey-light); }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .check-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.8rem;
+    border: 1px solid var(--border);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .check-card:hover {
+    box-shadow: 0 8px 30px rgba(11,45,94,0.1);
+    transform: translateY(-3px);
+  }
+
+  .check-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .check-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--blue-deep);
+  }
+
+  .check-card p {
+    font-size: 0.875rem;
+    color: var(--grey-text);
+    line-height: 1.6;
+  }
+
+  /* ANTIDOPAGE TABLE */
+  #antidopage { background: white; }
+
+  .filter-bar {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.45rem 1.1rem;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: white;
+    color: var(--grey-text);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--blue-accent);
+    border-color: var(--blue-accent);
+    color: white;
+  }
+
+  .drug-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .drug-table thead tr {
+    background: var(--blue-deep);
+    color: white;
+  }
+
+  .drug-table th {
+    padding: 0.9rem 1rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  .drug-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  .drug-table tbody tr:hover { background: var(--blue-pale); }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .badge-ok { background: #DCFCE7; color: var(--green-ok); }
+  .badge-warn { background: #FEF3C7; color: var(--orange-warn); }
+  .badge-danger { background: #FEE2E2; color: var(--red-alert); }
+
+  .drug-name { font-weight: 600; color: var(--blue-deep); }
+  .drug-found { color: var(--grey-text); font-size: 0.8rem; }
+
+  /* CONSEILS */
+  #conseils { background: var(--grey-light); }
+
+  .conseil-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .conseil-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.8rem;
+    border-left: 4px solid var(--blue-accent);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .conseil-card .tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--blue-accent);
+    margin-bottom: 0.7rem;
+  }
+
+  .conseil-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blue-deep);
+    margin-bottom: 0.6rem;
+  }
+
+  .conseil-card p {
+    font-size: 0.875rem;
+    color: var(--grey-text);
+    line-height: 1.65;
+  }
+
+  /* PHARMACIEN ROLE */
+  #pharmacien { background: white; }
+
+  .role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) { .role-grid { grid-template-columns: 1fr; } }
+
+  .role-list { list-style: none; }
+
+  .role-list li {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .role-list li:last-child { border-bottom: none; }
+
+  .role-num {
+    width: 28px; height: 28px;
+    background: var(--blue-pale);
+    color: var(--blue-accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .role-list li div strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--blue-deep);
+    margin-bottom: 0.2rem;
+  }
+
+  .role-list li div p {
+    font-size: 0.82rem;
+    color: var(--grey-text);
+  }
+
+  .role-visual {
+    background: linear-gradient(135deg, var(--blue-pale), #DBEAFE);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+
+  .role-visual .big-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .role-visual h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--blue-deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .role-visual p {
+    font-size: 0.875rem;
+    color: var(--grey-text);
+  }
+
+  /* RESSOURCES */
+  #ressources { background: var(--blue-deep); color: white; }
+
+  #ressources .section-label { color: #93C5FD; }
+  #ressources .section-title { color: white; }
+  #ressources .section-sub { color: rgba(255,255,255,0.65); }
+
+  .ressource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .ressource-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: white;
+    transition: background 0.2s, transform 0.2s;
+    display: block;
+  }
+
+  .ressource-card:hover {
+    background: rgba(255,255,255,0.13);
+    transform: translateY(-3px);
+  }
+
+  .ressource-card .r-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .ressource-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .ressource-card p {
+    font-size: 0.78rem;
+    opacity: 0.65;
+    line-height: 1.5;
+  }
+
+  .ressource-card .r-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.75rem;
+    color: #93C5FD;
+    font-weight: 500;
+  }
+
+  /* AI CHAT */
+  #assistant { background: var(--grey-light); }
+
+  .chat-wrapper {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(11,45,94,0.08);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .chat-header {
+    background: var(--blue-deep);
+    color: white;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .chat-header .dot {
+    width: 8px; height: 8px;
+    background: #4ADE80;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .chat-header span {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .chat-messages {
+    padding: 1.5rem;
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .msg {
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg.user { flex-direction: row-reverse; }
+
+  .msg-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .msg.bot .msg-avatar { background: var(--blue-pale); }
+  .msg.user .msg-avatar { background: var(--blue-accent); color: white; }
+
+  .msg-bubble {
+    max-width: 80%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .msg.bot .msg-bubble {
+    background: var(--blue-pale);
+    color: var(--blue-deep);
+    border-bottom-left-radius: 4px;
+  }
+
+  .msg.user .msg-bubble {
+    background: var(--blue-accent);
+    color: white;
+    border-bottom-right-radius: 4px;
+  }
+
+  .chat-input-area {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .chat-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--blue-deep);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .chat-input:focus { border-color: var(--blue-accent); }
+
+  .chat-send {
+    padding: 0.7rem 1.2rem;
+    background: var(--blue-accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .chat-send:hover { background: var(--blue-deep); }
+
+  .quick-questions {
+    padding: 0 1.5rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .quick-q {
+    padding: 0.3rem 0.8rem;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    font-size: 0.75rem;
+    color: var(--grey-text);
+    cursor: pointer;
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .quick-q:hover {
+    border-color: var(--blue-accent);
+    color: var(--blue-accent);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--blue-deep);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+  }
+
+  footer strong { color: white; }
+
+  /* TYPING INDICATOR */
+  .typing-indicator {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 0.8rem 1rem;
+  }
+
+  .typing-dot {
+    width: 7px; height: 7px;
+    background: var(--blue-mid);
+    border-radius: 50%;
+    animation: typing 1.2s infinite;
+  }
+
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  /* INTERACTIONS */
+  #interactions { background: var(--grey-light); }
+
+  .inter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .inter-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--red-alert);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .inter-card.warn { border-top-color: var(--orange-warn); }
+  .inter-card.info { border-top-color: var(--blue-accent); }
+
+  .inter-card:hover {
+    box-shadow: 0 6px 24px rgba(11,45,94,0.1);
+    transform: translateY(-2px);
+  }
+
+  .inter-pair {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .inter-mol {
+    background: var(--blue-pale);
+    color: var(--blue-deep);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .inter-plus {
+    font-weight: 700;
+    color: var(--grey-mid);
+    font-size: 1rem;
+  }
+
+  .inter-card h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+    margin-bottom: 0.4rem;
+  }
+
+  .inter-card p {
+    font-size: 0.83rem;
+    color: var(--grey-text);
+    line-height: 1.6;
+  }
+
+  .inter-level {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .level-danger { background: #FEE2E2; color: var(--red-alert); }
+  .level-warn   { background: #FEF3C7; color: var(--orange-warn); }
+  .level-info   { background: var(--blue-pale); color: var(--blue-accent); }
+
+  /* CONTACT */
+  #contact { background: white; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .contact-card {
+    background: var(--grey-light);
+    border-radius: 14px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .contact-card:hover {
+    box-shadow: 0 8px 28px rgba(11,45,94,0.1);
+    transform: translateY(-3px);
+  }
+
+  .contact-avatar {
+    width: 64px; height: 64px;
+    background: var(--blue-deep);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 1rem;
+    color: white;
+  }
+
+  .contact-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-card .role {
+    font-size: 0.78rem;
+    color: var(--grey-mid);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .contact-mail {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--blue-accent);
+    color: white;
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+    word-break: break-all;
+  }
+
+  .contact-mail:hover { background: var(--blue-deep); }
+
+  .contact-note {
+    margin-top: 2rem;
+    padding: 1.2rem 1.5rem;
+    background: var(--blue-pale);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 0.875rem;
+    color: var(--grey-text);
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    nav .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .drug-table { font-size: 0.78rem; }
+    .drug-table th, .drug-table td { padding: 0.7rem 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="cross">✚</div>
+    Le Pharmacien Sportif
+  </a>
+  <ul class="nav-links">
+    <li><a href="#checklist">Avant de prendre</a></li>
+    <li><a href="#antidopage">Liste antidopage</a></li>
+    <li><a href="#conseils">Conseils</a></li>
+    <li><a href="#pharmacien">Rôle du pharmacien</a></li>
+    <li><a href="#interactions">Interactions</a></li>
+    <li><a href="#assistant">Assistant IA</a></li>
+    <li><a href="#ressources">Ressources</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✚ Santé sportive · Algérie</div>
+  <h1>Le pharmacien,<br><em>votre allié</em> dans le sport</h1>
+  <p>Conseils fiables sur l'automédication, liste antidopage à jour, et ressources pratiques pour les sportifs algériens.</p>
+  <a href="#checklist" class="hero-cta">
+    ✔ Vérifier avant de prendre →
+  </a>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <strong>47,6 %</strong>
+      <span>des sportifs s'automédiquent sans ordonnance</span>
+    </div>
+    <div class="hero-stat">
+      <strong>28,2 %</strong>
+      <span>n'ont jamais vérifié la liste antidopage</span>
+    </div>
+    <div class="hero-stat">
+      <strong>70 %</strong>
+      <span>souhaitent un conseil pharmaceutique dédié</span>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKLIST -->
+<section id="checklist">
+  <div class="container">
+    <div class="section-label">Avant de prendre un médicament</div>
+    <h2 class="section-title">3 questions à se poser systématiquement</h2>
+    <p class="section-sub">Avant tout médicament lié à votre pratique sportive, ces trois réflexes peuvent vous éviter des complications sérieuses.</p>
+    <div class="checklist-grid">
+      <div class="check-card">
+        <div class="check-icon" style="background:#EBF3FB;">🏆</div>
+        <h3>1. Ai-je une compétition prochainement ?</h3>
+        <p>Si vous êtes licencié et soumis aux contrôles antidopage, vérifiez le statut de chaque substance avant de la prendre. Même un décongestionnant nasal banal peut contenir une substance interdite. Utilisez l'application <strong>Global DRO</strong> pour une vérification en 30 secondes.</p>
+      </div>
+      <div class="check-card">
+        <div class="check-icon" style="background:#FEF3C7;">💊</div>
+        <h3>2. Est-ce que je prends autre chose en ce moment ?</h3>
+        <p>La combinaison de plusieurs médicaments, même courants, peut provoquer des interactions dangereuses. AINS + myorelaxants, paracétamol + alcool, créatine + AINS : ces associations multiplient les risques rénaux et hépatiques, surtout à l'effort. Demandez toujours conseil à votre pharmacien.</p>
+      </div>
+      <div class="check-card">
+        <div class="check-icon" style="background:#DCFCE7;">🩺</div>
+        <h3>3. Est-ce que je soigne ou est-ce que je masque ?</h3>
+        <p>Prendre un antalgique pour continuer à s'entraîner malgré une douleur persistante, c'est masquer un signal que votre corps envoie. Une tendinite ignorée devient une rupture. Une entorse mal soignée devient une lésion chronique. Si la douleur revient à chaque séance, consultez.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANTIDOPAGE -->
+<section id="antidopage">
+  <div class="container">
+    <div class="section-label">Réglementation AMA 2024–2025</div>
+    <h2 class="section-title">Liste antidopage simplifiée</h2>
+    <p class="section-sub">Les substances les plus fréquemment rencontrées par les sportifs amateurs. Statut selon la Liste des Interdictions de l'AMA, mise à jour annuellement.</p>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterTable('tous', this)">Toutes</button>
+      <button class="filter-btn" onclick="filterTable('autorise', this)">✅ Autorisées</button>
+      <button class="filter-btn" onclick="filterTable('verifier', this)">⚠️ À vérifier</button>
+      <button class="filter-btn" onclick="filterTable('interdit', this)">🚫 Interdites</button>
+    </div>
+
+    <div style="overflow-x:auto;">
+    <table class="drug-table" id="drugTable">
+      <thead>
+        <tr>
+          <th>Substance / Médicament</th>
+          <th>On le trouve dans</th>
+          <th>Statut AMA</th>
+          <th>Remarque</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-status="autorise">
+          <td><span class="drug-name">Paracétamol</span></td>
+          <td><span class="drug-found">Doliprane, Efferalgan, Dafalgan</span></td>
+          <td><span class="status-badge badge-ok">✅ Autorisé</span></td>
+          <td>Max 4g/jour. Risque hépatique si surdosage ou alcool.</td>
+        </tr>
+        <tr data-status="autorise">
+          <td><span class="drug-name">Ibuprofène</span></td>
+          <td><span class="drug-found">Advil, Nurofen, génériques</span></td>
+          <td><span class="status-badge badge-ok">✅ Autorisé</span></td>
+          <td>Éviter avant effort intense. Risque rénal si déshydratation.</td>
+        </tr>
+        <tr data-status="verifier">
+          <td><span class="drug-name">Pseudoéphédrine</span></td>
+          <td><span class="drug-found">Décongestionnants nasaux (Rhinofluimucil…)</span></td>
+          <td><span class="status-badge badge-warn">⚠️ À vérifier</span></td>
+          <td>Interdite en compétition si > 150 µg/ml urinaire. Classe S6.</td>
+        </tr>
+        <tr data-status="verifier">
+          <td><span class="drug-name">Éphédrine</span></td>
+          <td><span class="drug-found">Compléments à base de plantes, certains sirops</span></td>
+          <td><span class="status-badge badge-warn">⚠️ À vérifier</span></td>
+          <td>Interdite en compétition. Classe S6 stimulants.</td>
+        </tr>
+        <tr data-status="verifier">
+          <td><span class="drug-name">Caféine</span></td>
+          <td><span class="drug-found">Café, energy drinks, pré-entraînements</span></td>
+          <td><span class="status-badge badge-warn">⚠️ Surveillance AMA</span></td>
+          <td>Retirée de la liste en 2004 mais sous surveillance. > 6mg/kg : risque.</td>
+        </tr>
+        <tr data-status="verifier">
+          <td><span class="drug-name">Tramadol</span></td>
+          <td><span class="drug-found">Antalgique opioïde sur ordonnance</span></td>
+          <td><span class="status-badge badge-warn">⚠️ Surveillance AMA</span></td>
+          <td>Sous surveillance AMA depuis 2024. Potentiel dopant reconnu.</td>
+        </tr>
+        <tr data-status="verifier">
+          <td><span class="drug-name">Glucocorticoïdes (injectables)</span></td>
+          <td><span class="drug-found">Cortisone injectée, infiltrations</span></td>
+          <td><span class="status-badge badge-warn">⚠️ AUT requise</span></td>
+          <td>Interdits en compétition sans Autorisation d'Usage Thérapeutique.</td>
+        </tr>
+        <tr data-status="interdit">
+          <td><span class="drug-name">DMAA (méthylhexanéamine)</span></td>
+          <td><span class="drug-found">Brûle-graisses, pré-entraînements</span></td>
+          <td><span class="status-badge badge-danger">🚫 Interdit</span></td>
+          <td>Interdit en permanence. Classe S6. Souvent non déclaré sur l'étiquette.</td>
+        </tr>
+        <tr data-status="interdit">
+          <td><span class="drug-name">Stéroïdes anabolisants (SAA)</span></td>
+          <td><span class="drug-found">Testostérone, trenbolone, boldenone…</span></td>
+          <td><span class="status-badge badge-danger">🚫 Interdit</span></td>
+          <td>Interdit en permanence. Classe S1. Risques cardiovasculaires graves.</td>
+        </tr>
+        <tr data-status="interdit">
+          <td><span class="drug-name">EPO (érythropoïétine)</span></td>
+          <td><span class="drug-found">Hormone injectable</span></td>
+          <td><span class="status-badge badge-danger">🚫 Interdit</span></td>
+          <td>Interdit en permanence. Classe S2. Risque thromboembolique élevé.</td>
+        </tr>
+        <tr data-status="interdit">
+          <td><span class="drug-name">Hormone de croissance (GH)</span></td>
+          <td><span class="drug-found">Injectable, vendue illégalement</span></td>
+          <td><span class="status-badge badge-danger">🚫 Interdit</span></td>
+          <td>Interdit en permanence. Classe S2. Risque acromégalie, diabète.</td>
+        </tr>
+        <tr data-status="interdit">
+          <td><span class="drug-name">Diurétiques</span></td>
+          <td><span class="drug-found">Furosémide, hydrochlorothiazide</span></td>
+          <td><span class="status-badge badge-danger">🚫 Interdit</span></td>
+          <td>Interdit en permanence et en compétition. Classe S5. Masquage.</td>
+        </tr>
+        <tr data-status="autorise">
+          <td><span class="drug-name">Créatine monohydrate</span></td>
+          <td><span class="drug-found">Compléments sportifs</span></td>
+          <td><span class="status-badge badge-ok">✅ Autorisé</span></td>
+          <td>Non interdite. Risque de contamination selon la marque. > 5g/j : charge rénale.</td>
+        </tr>
+        <tr data-status="autorise">
+          <td><span class="drug-name">Magnésium</span></td>
+          <td><span class="drug-found">Compléments, pharmacie</span></td>
+          <td><span class="status-badge badge-ok">✅ Autorisé</span></td>
+          <td>Non interdit. Surdosage possible en cas de prise excessive.</td>
+        </tr>
+        <tr data-status="autorise">
+          <td><span class="drug-name">Diclofénac</span></td>
+          <td><span class="drug-found">Voltarène, génériques (ordonnance)</span></td>
+          <td><span class="status-badge badge-ok">✅ Autorisé</span></td>
+          <td>Non interdit, mais sur ordonnance. Risques digestifs et rénaux importants.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:0.75rem; color:var(--grey-mid); margin-top:1rem;">
+      ⚠️ Cette liste est fournie à titre informatif. Vérifiez toujours sur <strong>globaldro.com</strong> ou via l'application <strong>ADEL</strong> (AMA) avant toute prise. Mise à jour : 2025.
+    </p>
+  </div>
+</section>
+
+<!-- CONSEILS -->
+<section id="conseils">
+  <div class="container">
+    <div class="section-label">Conseils pratiques</div>
+    <h2 class="section-title">Ce que tout sportif devrait savoir</h2>
+    <p class="section-sub">Des conseils concrets, ancrés dans les données, pour une automédication plus sûre et des choix éclairés.</p>
+    <div class="conseil-grid">
+      <div class="conseil-card">
+        <div class="tag">AINS & Déshydratation</div>
+        <h3>Ne prenez pas d'AINS avant un effort intense en été</h3>
+        <p>La combinaison déshydratation + AINS (ibuprofène, diclofénac, aspirine) peut provoquer une insuffisance rénale aiguë, même chez un sujet jeune sans antécédents. Ce risque est particulièrement élevé dans les wilayas de l'est algérien en période estivale. Hydratez-vous avant, pendant et après l'effort.</p>
+      </div>
+      <div class="conseil-card">
+        <div class="tag">Paracétamol</div>
+        <h3>Le paracétamol n'est pas inoffensif à haute dose</h3>
+        <p>Présent dans de nombreux produits sous des noms différents, le paracétamol peut être consommé en double dose sans le réaliser. Au-delà de 3 à 4g par jour — moins encore si vous consommez de l'alcool — il génère un métabolite toxique pour le foie. Lisez toujours les étiquettes et ne cumulez pas les sources.</p>
+      </div>
+      <div class="conseil-card">
+        <div class="tag">Compléments alimentaires</div>
+        <h3>Un complément "naturel" peut contenir une substance interdite</h3>
+        <p>Les brûleurs de graisses, pré-entraînements et boosters achetés en salle de sport ou sur Internet peuvent contenir du DMAA, de l'éphédrine ou des traces de stéroïdes anabolisants issus de contaminations croisées en fabrication. Achetez uniquement des marques certifiées par des programmes comme Informed Sport ou NSF.</p>
+      </div>
+      <div class="conseil-card">
+        <div class="tag">Douleur & Blessure</div>
+        <h3>Masquer la douleur ne soigne pas — ça reporte et aggrave</h3>
+        <p>Prendre un antalgique pour continuer à s'entraîner sur une structure déjà fragilisée, c'est souvent transformer une blessure légère en lésion chronique. Une tendinite ignorée se transforme en rupture tendineuse. Si vous avez besoin d'un médicament pour supporter l'entraînement, c'est le signal que l'entraînement doit s'arrêter.</p>
+      </div>
+      <div class="conseil-card">
+        <div class="tag">Ordonnances</div>
+        <h3>Ne réutilisez pas une ancienne ordonnance pour une nouvelle blessure</h3>
+        <p>Un traitement prescrit pour une entorse du genou il y a deux ans n'est pas forcément adapté à votre situation actuelle. La posologie peut être incorrecte, le médicament périmé, et la blessure différente de ce que vous pensez. Chaque blessure mérite une évaluation fraîche.</p>
+      </div>
+      <div class="conseil-card">
+        <div class="tag">Myorelaxants</div>
+        <h3>Les myorelaxants causent somnolence et altèrent les réflexes</h3>
+        <p>Ces médicaments — baclofène, méthocarbamol — sont sur ordonnance pour de bonnes raisons. Ils provoquent une somnolence qui altère la coordination et les réflexes, augmentant le risque de chute ou de blessure à l'entraînement. Certains ont un potentiel de dépendance. Ne les prenez jamais sans avis médical.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHARMACIEN -->
+<section id="pharmacien">
+  <div class="container">
+    <div class="section-label">Un professionnel de santé accessible</div>
+    <h2 class="section-title">Ce que votre pharmacien peut faire pour vous</h2>
+    <p class="section-sub">43,4 % des sportifs ne savaient pas qu'ils pouvaient demander une vérification antidopage à leur pharmacien. Voici ce qu'il peut réellement faire.</p>
+    <div class="role-grid">
+      <ul class="role-list">
+        <li>
+          <div class="role-num">1</div>
+          <div>
+            <strong>Vérifier le statut antidopage d'un médicament</strong>
+            <p>Avant une compétition, il peut consulter les ressources officielles (Global DRO, ADEL) et vous dire si ce que vous prenez est compatible avec votre statut de sportif licencié.</p>
+          </div>
+        </li>
+        <li>
+          <div class="role-num">2</div>
+          <div>
+            <strong>Détecter les interactions médicamenteuses</strong>
+            <p>Si vous prenez plusieurs produits simultanément — médicaments, compléments, phytothérapie — il peut identifier les associations à risque que vous n'auriez pas vues.</p>
+          </div>
+        </li>
+        <li>
+          <div class="role-num">3</div>
+          <div>
+            <strong>Adapter le conseil à votre profil sportif</strong>
+            <p>Un adolescent en croissance, une femme enceinte qui court, un athlète soumis aux contrôles : chaque profil appelle une réponse différente, et le pharmacien est formé pour les distinguer.</p>
+          </div>
+        </li>
+        <li>
+          <div class="role-num">4</div>
+          <div>
+            <strong>Vous orienter vers le bon professionnel</strong>
+            <p>Il reconnaît quand une situation dépasse le cadre de l'automédication et peut vous orienter vers un médecin du sport, un diététicien ou un kinésithérapeute selon votre besoin.</p>
+          </div>
+        </li>
+        <li>
+          <div class="role-num">5</div>
+          <div>
+            <strong>Vous aider à constituer un dossier AUT</strong>
+            <p>Si vous avez besoin d'un traitement contenant une substance interdite pour une raison médicale légitime, il peut vous accompagner dans la demande d'Autorisation d'Usage Thérapeutique.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="role-visual">
+        <div class="big-icon">🏥</div>
+        <h3>Sans rendez-vous.<br>Sans délai.<br>Dans votre quartier.</h3>
+        <p style="margin-top:0.8rem;">Le pharmacien est le professionnel de santé le plus accessible du système. Il est là pour vous — pas seulement pour délivrer une ordonnance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIONS MEDICAMENTEUSES -->
+<section id="interactions">
+  <div class="container">
+    <div class="section-label">Pharmacologie du sport</div>
+    <h2 class="section-title">Principales interactions médicamenteuses</h2>
+    <p class="section-sub">Les associations les plus dangereuses documentées chez les sportifs pratiquant l'automédication. À connaître absolument avant toute prise.</p>
+
+    <div class="inter-grid">
+
+      <div class="inter-card">
+        <span class="inter-level level-danger">⛔ Danger élevé</span>
+        <div class="inter-pair">
+          <span class="inter-mol">AINS</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">Anticoagulants</span>
+        </div>
+        <h4>Risque hémorragique majeur</h4>
+        <p>Les AINS déplacent les anticoagulants (warfarine) de leurs sites de liaison protéique, augmentant leur fraction libre. Ce cumul peut provoquer des hémorragies internes graves, même à doses normales.</p>
+      </div>
+
+      <div class="inter-card">
+        <span class="inter-level level-danger">⛔ Danger élevé</span>
+        <div class="inter-pair">
+          <span class="inter-mol">SAA</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">Insuline</span>
+        </div>
+        <h4>Hypoglycémie sévère</h4>
+        <p>Les stéroïdes anabolisants potentialisent l'effet de l'insuline sur les cellules musculaires. Cette synergie peut précipiter une hypoglycémie profonde, potentiellement mortelle lors d'un effort intense.</p>
+      </div>
+
+      <div class="inter-card">
+        <span class="inter-level level-danger">⛔ Danger élevé</span>
+        <div class="inter-pair">
+          <span class="inter-mol">SAA</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">Stimulants</span>
+        </div>
+        <h4>Cardiotoxicité cumulative</h4>
+        <p>L'association stéroïdes anabolisants + stimulants (amphétamines, éphédrine) produit une synergie cardiovasculaire dangereuse : hypertension, tachycardie, arythmies. Risque de mort subite documenté.</p>
+      </div>
+
+      <div class="inter-card warn">
+        <span class="inter-level level-warn">⚠️ Risque modéré</span>
+        <div class="inter-pair">
+          <span class="inter-mol">AINS</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">AINS</span>
+        </div>
+        <h4>Cumul de toxicité sans bénéfice</h4>
+        <p>Prendre deux AINS simultanément (ex : ibuprofène + diclofénac) ne double pas l'effet analgésique, mais double la toxicité digestive et rénale. Une erreur fréquente chez les sportifs qui alternent les produits.</p>
+      </div>
+
+      <div class="inter-card warn">
+        <span class="inter-level level-warn">⚠️ Risque modéré</span>
+        <div class="inter-pair">
+          <span class="inter-mol">AINS</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">Corticoïdes</span>
+        </div>
+        <h4>Risque ulcéreux multiplié</h4>
+        <p>Chacun de ces médicaments fragilise la muqueuse gastrique par des mécanismes différents. Leur association multiplie le risque d'ulcère gastroduodénal et d'hémorragie digestive, surtout chez le sportif déshydraté.</p>
+      </div>
+
+      <div class="inter-card warn">
+        <span class="inter-level level-warn">⚠️ Risque modéré</span>
+        <div class="inter-pair">
+          <span class="inter-mol">Créatine</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">AINS</span>
+        </div>
+        <h4>Néphrotoxicité potentialisée</h4>
+        <p>La créatine à haute dose augmente la charge de filtration rénale. Associée aux AINS — qui réduisent la perfusion rénale — cette combinaison peut précipiter une insuffisance rénale aiguë, notamment en conditions de chaleur.</p>
+      </div>
+
+      <div class="inter-card warn">
+        <span class="inter-level level-warn">⚠️ Risque modéré</span>
+        <div class="inter-pair">
+          <span class="inter-mol">Paracétamol</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">Alcool</span>
+        </div>
+        <h4>Hépatotoxicité accélérée</h4>
+        <p>L'alcool induit les enzymes hépatiques qui produisent le métabolite toxique du paracétamol (NAPQI). Même une consommation modérée d'alcool abaisse le seuil de toxicité hépatique à 2–3 g/jour au lieu de 4 g.</p>
+      </div>
+
+      <div class="inter-card info">
+        <span class="inter-level level-info">ℹ️ À surveiller</span>
+        <div class="inter-pair">
+          <span class="inter-mol">Caféine</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">Éphédrine</span>
+        </div>
+        <h4>Stimulation cardiovasculaire excessive</h4>
+        <p>Cette combinaison — présente dans certains "fat burners" — produit une stimulation sympathique intense. Tachycardie, hypertension, tremblements, insomnie. Risque d'arythmies en effort intense, notamment par forte chaleur.</p>
+      </div>
+
+      <div class="inter-card info">
+        <span class="inter-level level-info">ℹ️ À surveiller</span>
+        <div class="inter-pair">
+          <span class="inter-mol">Oméga-3</span>
+          <span class="inter-plus">+</span>
+          <span class="inter-mol">Anticoagulants</span>
+        </div>
+        <h4>Effet anticoagulant potentialisé</h4>
+        <p>À haute dose (> 3 g/jour), les oméga-3 ont un effet anticoagulant propre. Associés à la warfarine ou à l'aspirine, ils peuvent augmenter le risque de saignement. Souvent ignoré car perçus comme "naturels".</p>
+      </div>
+
+    </div>
+
+    <div style="margin-top:1.5rem; padding:1rem 1.2rem; background:#FEE2E2; border-radius:10px; border:1px solid #FECACA; font-size:0.83rem; color:#7F1D1D;">
+      ⚠️ <strong>Rappel important :</strong> L'effort physique modifie lui-même la pharmacocinétique — déshydratation, hyperthermie, variations du pH sanguin. Un médicament sûr au repos peut se comporter différemment à l'effort. En cas de doute, consultez votre pharmacien avant de combiner des produits.
+    </div>
+  </div>
+</section>
+
+<!-- AI ASSISTANT -->
+<section id="assistant">
+  <div class="container">
+    <div class="section-label">Assistant IA</div>
+    <h2 class="section-title">Posez votre question</h2>
+    <p class="section-sub">Un assistant alimenté par l'IA pour répondre à vos questions sur l'automédication sportive. Cet assistant ne remplace pas un professionnel de santé.</p>
+
+    <div class="chat-wrapper">
+      <div class="chat-header">
+        <div class="dot"></div>
+        <span>Assistant Pharmacien Sportif · En ligne</span>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">
+          <div class="msg-avatar">✚</div>
+          <div class="msg-bubble">
+            Bonjour ! Je suis l'assistant du Pharmacien Sportif. Vous pouvez me poser des questions sur les médicaments dans le sport, l'antidopage, ou les risques de l'automédication. Comment puis-je vous aider ?
+          </div>
+        </div>
+      </div>
+      <div class="quick-questions">
+        <button class="quick-q" onclick="sendQuick('Puis-je prendre de l\'ibuprofène avant un match ?')">Ibuprofène avant un match ?</button>
+        <button class="quick-q" onclick="sendQuick('La créatine est-elle interdite ?')">Créatine interdite ?</button>
+        <button class="quick-q" onclick="sendQuick('Que faire en cas de blessure à l\'entraînement ?')">Blessure à l'entraînement</button>
+        <button class="quick-q" onclick="sendQuick('Comment vérifier la liste antidopage ?')">Vérifier liste AMA</button>
+      </div>
+      <div class="chat-input-area">
+        <input class="chat-input" id="chatInput" type="text" placeholder="Posez votre question ici…" onkeydown="if(event.key==='Enter') sendMessage()">
+        <button class="chat-send" onclick="sendMessage()">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESSOURCES -->
+<section id="ressources">
+  <div class="container">
+    <div class="section-label">Ressources officielles</div>
+    <h2 class="section-title">Les outils à connaître</h2>
+    <p class="section-sub">Ces ressources gratuites permettent de vérifier le statut antidopage d'un médicament en quelques secondes.</p>
+    <div class="ressource-grid">
+      <a href="https://www.globaldro.com" target="_blank" class="ressource-card">
+        <div class="r-icon">🌍</div>
+        <h4>Global DRO</h4>
+        <p>Vérifiez le statut antidopage de n'importe quel médicament selon votre pays, en temps réel.</p>
+        <span class="r-link">globaldro.com →</span>
+      </a>
+      <a href="https://www.wada-ama.org" target="_blank" class="ressource-card">
+        <div class="r-icon">📋</div>
+        <h4>Liste AMA 2025</h4>
+        <p>La liste officielle des substances interdites, mise à jour chaque année par l'Agence Mondiale Antidopage.</p>
+        <span class="r-link">wada-ama.org →</span>
+      </a>
+      <a href="https://www.anad.dz" target="_blank" class="ressource-card">
+        <div class="r-icon">🇩🇿</div>
+        <h4>ANAD Algérie</h4>
+        <p>L'Agence Nationale Antidopage algérienne. Procédures AUT, sanctions, ressources nationales.</p>
+        <span class="r-link">anad.dz →</span>
+      </a>
+      <a href="https://www.medicaments.sport.gouv.fr" target="_blank" class="ressource-card">
+        <div class="r-icon">💊</div>
+        <h4>Médicaments & Sport</h4>
+        <p>Plateforme française (AFLD) : statut antidopage des médicaments courants, utile pour les produits non couverts par l'ANAD.</p>
+        <span class="r-link">medicaments.sport.gouv.fr →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Nous contacter</div>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-sub">Pour toute question ou suggestion, contactez-nous par e-mail.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <a href="mailto:akramfemmam07@gmail.com" class="contact-mail">
+          akramfemmam07@gmail.com
+        </a>
+      </div>
+      <div class="contact-card">
+        <a href="mailto:achrafdjezzar07@gmail.com" class="contact-mail">
+          achrafdjezzar07@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Le Pharmacien Sportif</strong> · Ressource éducative pour les sportifs algériens</p>
+  <p style="margin-top:0.5rem;">Ce site ne remplace pas un avis médical ou pharmaceutique. En cas de doute, consultez votre pharmacien ou médecin.</p>
+
+
+</footer>
+
+<script>
+// ─── FILTER TABLE ───
+function filterTable(status, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#drugTable tbody tr').forEach(row => {
+    row.style.display = (status === 'tous' || row.dataset.status === status) ? '' : 'none';
+  });
+}
+
+// ─── BASE DE CONNAISSANCES — TIRÉE DU MÉMOIRE FEMMAM & DJEZZAR 2026 ───
+const KB = [
+  {
+    keys: ['automédication','automedication','définition','definition','oms','qui est','qu est ce'],
+    rep: "L'automédication désigne l'utilisation de médicaments pour traiter des symptômes auto-diagnostiqués, sans prescription médicale. L'OMS distingue l'automédication responsable — médicaments OTC utilisés correctement — de l'automédication non responsable, qui expose à des effets indésirables graves. Dans notre étude menée sur 143 sportifs de l'est algérien, 47,6 % des répondants s'automédiquent dans le cadre de leur pratique sportive."
+  },
+  {
+    keys: ['prévalence','prevalence','combien','pourcentage','fréquent','frequent','répandu'],
+    rep: "Selon notre étude (2026, n=143, est algérien), 47,6 % des sportifs s'automédiquent. Ce résultat est cohérent avec la littérature internationale : Omeragić et al. (2021) trouvaient 55 % en Europe du Sud-Est, Abitteboul et al. 50 % chez les rugbymen amateurs français. Les AINS dominent avec 29,5 % des médicaments consommés aux JO selon Stuart et al. (2024)."
+  },
+  {
+    keys: ['ibuprofène','ibuprofen','advil','nurofen','avant un match','avant match','avant effort'],
+    rep: "L'ibuprofène (AINS) est autorisé par l'AMA mais déconseillé avant un effort intense. Notre étude confirme que les AINS sont utilisés par une large proportion de sportifs sans ordonnance. En conditions de déshydratation — fréquente dans l'est algérien en été — ils peuvent provoquer une insuffisance rénale aiguë. La triade déshydratation + effort + AINS est particulièrement dangereuse. Consultez votre pharmacien avant toute prise."
+  },
+  {
+    keys: ['paracétamol','paracetamol','doliprane','efferalgan','dafalgan'],
+    rep: "Le paracétamol est la substance la plus utilisée dans notre étude : 88,7 % des automédiqués en consomment. Son action analgésique centrale peut même retarder la fatigue neuromusculaire (Bouchiba et al., 2025), ce qui pousse certains sportifs à l'utiliser à visée performative. Risque majeur : hépatotoxicité au-delà de 3-4 g/jour, aggravée par la déshydratation propre à l'effort et par l'alcool. Souvent consommé en double dose involontaire car présent dans plusieurs produits."
+  },
+  {
+    keys: ['diclofénac','diclofenac','voltarène','voltarene'],
+    rep: "Le diclofénac est utilisé par 63,4 % des automédiqués dans notre étude — c'est notre résultat le plus préoccupant. 57,3 % s'en approvisionnent en officine sans ordonnance, alors qu'il est théoriquement soumis à prescription en Algérie. Ses risques sont sérieux : lésions digestives, insuffisance rénale aiguë en cas de déshydratation. Ne le prenez jamais sans prescription médicale."
+  },
+  {
+    keys: ['myorelaxant','muscle relaxant','baclofène','baclofen','méthocarbamol'],
+    rep: "Les myorelaxants concernent 49,3 % des automédiqués dans notre étude — un résultat inattendu. Ces médicaments sur ordonnance (baclofène, méthocarbamol) provoquent somnolence, altération des réflexes et risque de dépendance. Les prendre sans prescription pour continuer l'entraînement est particulièrement dangereux. Notre étude montre qu'ils sont largement accessibles sans ordonnance dans les officines algériennes."
+  },
+  {
+    keys: ['motivation','pourquoi','raison','performance','douleur'],
+    rep: "Notre étude identifie deux grandes catégories de motivations. 63,1 % des citations sont thérapeutiques (douleur aiguë, récupération, blessure chronique). Mais 42 % relèvent de la performance pure : amélioration générale, force maximale, hypertrophie musculaire. Ce résultat clé montre que l'automédication sportive dépasse la logique thérapeutique — certains sportifs cherchent à progresser par voie pharmacologique, ce qui approche la frontière du dopage."
+  },
+  {
+    keys: ['antidopage','liste ama','liste interdite','wada','anad','contrôle','controle','dopage'],
+    rep: "28,2 % des automédiqués dans notre étude n'ont jamais vérifié la liste antidopage, et 16,9 % ignoraient même son existence. Ce n'est pas de la triche — c'est de l'ignorance. L'AMA publie chaque année la Liste des Interdictions, gérée en Algérie par l'ANAD (créée en 2020). Pour vérifier un médicament : globaldro.com ou l'application ADEL. Le pharmacien peut aussi faire cette vérification en 30 secondes."
+  },
+  {
+    keys: ['créatine','creatine'],
+    rep: "La créatine monohydrate n'est pas interdite par l'AMA. C'est le complément alimentaire le mieux documenté scientifiquement pour la force et la puissance musculaire. Dans notre étude, 12,5 % des sportifs en consomment. Deux risques à connaître : charge rénale au-delà de 5 g/jour, et risque de contamination par des substances interdites selon la marque. Choisissez des produits certifiés Informed Sport ou NSF."
+  },
+  {
+    keys: ['complément','complement','protéine','whey','bcaa','vitamine','supplement'],
+    rep: "Dans notre étude, 43,8 % des sportifs consomment des vitamines et minéraux, 12,5 % de la créatine et de la whey, 10,7 % des BCAA — souvent sans avis médical. Deux risques majeurs documentés : contamination involontaire par des substances interdites (dopage involontaire) et effets indésirables documentés chez les adolescents (Millán Jiménez et al., 2023). Privilégiez les marques certifiées et consultez un diététicien du sport."
+  },
+  {
+    keys: ['pharmacien','officine','conseil','rôle pharmacien','que peut faire'],
+    rep: "Notre étude révèle un paradoxe : le pharmacien n'est cité comme premier recours que par 13,3 % des sportifs, derrière l'autogestion (42,1 %), le médecin du sport et le médecin généraliste. Pourtant, 70 % des sportifs souhaitent un entretien pharmaceutique dédié. 41 % n'ont jamais posé de question à un pharmacien sur leur pratique sportive. Le pharmacien peut vérifier le statut antidopage, détecter les interactions, orienter vers le bon professionnel et accompagner une demande d'AUT."
+  },
+  {
+    keys: ['interaction','combinaison','mélange','prendre ensemble','deux médicament'],
+    rep: "Les interactions médicamenteuses sont fréquentes et dangereuses chez le sportif. Notre mémoire documente les principales associations à risque : AINS + anticoagulants (hémorragie), SAA + insuline (hypoglycémie sévère), SAA + stimulants (cardiotoxicité), AINS + AINS (cumul de toxicité), paracétamol + alcool (nécrose hépatique). L'effort physique lui-même modifie la pharmacocinétique : déshydratation, hyperthermie et variations du pH altèrent le comportement des médicaments."
+  },
+  {
+    keys: ['stéroïde','steroide','saa','testostérone','testosterone','anabolisant','haarlem'],
+    rep: "Les SAA sont interdits en permanence par l'AMA (Classe S1). L'étude HAARLEM (Smit et al., 2020) documentait : 94 % des utilisateurs visaient l'augmentation musculaire, 96 % utilisaient la testostérone, 97 % présentaient au moins un effet indésirable cliniquement significatif. Dans notre étude, zéro déclaration de SAA — mais ce silence reflète le biais de désirabilité sociale, pas l'absence du phénomène. Effets graves : troubles cardiovasculaires, hépatiques, dépendance dans 56 % des cas."
+  },
+  {
+    keys: ['epo','érythropoïétine','erythropoietine','hormone de croissance','gh'],
+    rep: "L'EPO et la GH sont interdites en permanence (Classe S2). L'EPO augmente les globules rouges mais provoque une hyperviscosité sanguine responsable de décès chez des cyclistes. La GH stimule la synthèse protéique et la lipolyse — utilisée par 21 % des consommateurs de SAA selon l'étude HAARLEM. Ces substances ne se déclarent pas dans les questionnaires : notre étude enregistre zéro déclaration, ce qui ne signifie pas zéro usage."
+  },
+  {
+    keys: ['tramadol','opioïde','opiode','codéine','codeine'],
+    rep: "Le tramadol est un opioïde faible sous surveillance AMA depuis 2024. Il représente 1,11 % des médicaments consommés aux JO (Stuart et al., 2024). Son potentiel addictif justifie une surveillance accrue. La codéine est également surveillée. Ces substances ne doivent être utilisées que sur prescription médicale, jamais en automédication dans un contexte sportif."
+  },
+  {
+    keys: ['corticoïde','cortisone','infiltration','glucocorticoïde','aut'],
+    rep: "Les glucocorticoïdes injectables sont interdits en compétition sans Autorisation d'Usage Thérapeutique (AUT). Selon l'AMA, 3,9 % des athlètes olympiques bénéficient d'une AUT. En Algérie, les demandes d'AUT sont gérées par l'ANAD. Si votre médecin vous prescrit une infiltration avant une compétition, constituez un dossier AUT. Les corticoïdes inhalés sont généralement autorisés."
+  },
+  {
+    keys: ['caféine','cafeine','café','energy drink','stimulant'],
+    rep: "La caféine a été retirée de la liste AMA en 2004 mais reste sous surveillance. Une dose de 3-6 mg/kg améliore l'endurance. Au-delà de 6 mg/kg, le risque d'arythmies augmente. Les amphétamines (Classe S6) sont interdites en permanence et produisent euphorie et réduction de fatigue mais exposent à des arythmies, hyperthermie et dépendance psychiatrique sévère. La pseudoéphédrine est interdite en compétition au-delà de 150 µg/ml urinaire."
+  },
+  {
+    keys: ['risque','danger','effet indésirable','effet indesirable','complication','organe'],
+    rep: "Notre mémoire identifie trois organes particulièrement exposés. Le tube digestif : les AINS inhibent la COX-1, fragilisant la muqueuse gastrique — risque aggravé par l'hypoperfusion splanchnique à l'effort. Le rein : la triade déshydratation + effort + AINS peut précipiter une insuffisance rénale aiguë même chez un sujet jeune. Le cœur : les SAA induisent une hypertrophie ventriculaire pathologique, perturbent le profil lipidique et augmentent le risque thromboembolique."
+  },
+  {
+    keys: ['surdosage','surdose','trop','dose','posologie'],
+    rep: "Le surdosage est un risque réel en automédication sportive. Le paracétamol est souvent consommé en double dose involontaire car présent dans plusieurs produits. Au-delà de 3-4 g/jour, il génère le NAPQI, métabolite hépatotoxique. Les AINS sont surconsommés quand la douleur persiste. Pour les SAA, l'étude HAARLEM documentait des doses de testostérone atteignant 10 à 100 fois les doses thérapeutiques usuelles."
+  },
+  {
+    keys: ['source','information','internet','entraîneur','entraineur','entourage','pair'],
+    rep: "Notre étude montre que les sportifs se tournent principalement vers l'autogestion (42,1 %), le médecin du sport (23,1 %) et le médecin généraliste (18,2 %). L'entraîneur est cité par 11,9 % — presque autant que le pharmacien (13,3 %). Backhouse et al. (2013) ont montré que les jeunes athlètes privilégient leurs pairs, créant des dynamiques qui normalisent l'automédication. Internet facilite l'accès à des informations non vérifiées et à des produits dangereux."
+  },
+  {
+    keys: ['algérie','algerie','context','contexte','anad','national'],
+    rep: "En Algérie, plusieurs facteurs aggravent le phénomène : médecine du sport peu développée hors des grandes villes, médicaments sur ordonnance délivrés sans ordonnance dans les officines, et aucune étude locale documentée avant notre travail. L'ANAD (Agence Nationale Antidopage) a été créée en 2020. Les sanctions peuvent atteindre 500 000 DA. Notre étude couvre 4 wilayas : Biskra, Batna, El Oued et Khenchela — 143 sportifs interrogés entre avril et mai 2026."
+  },
+  {
+    keys: ['blessure','entorse','tendinite','douleur','mal','blessé','récupération','recuperation'],
+    rep: "La douleur est la première motivation d'automédication dans notre étude (63,1 % des citations thérapeutiques). Masquer la douleur sans diagnostic expose à aggraver les lésions sous-jacentes : une tendinite ignorée devient une rupture tendineuse. Les AINS utilisés de façon prolongée masquent les symptômes sans traiter la cause. En cas de douleur persistante ou récidivante à chaque séance, consultez un médecin du sport plutôt que d'augmenter les doses."
+  },
+  {
+    keys: ['knowledge behavior gap','paradoxe','savent','connaissent risque','comportement'],
+    rep: "L'un des résultats les plus frappants de notre étude : 76 % des automédiqués reconnaissent l'existence de risques — et continuent quand même. C'est le knowledge-behavior gap : la connaissance du risque ne suffit pas à modifier le comportement. La pression de performance l'emporte. Ce paradoxe justifie une action structurelle au-delà de l'information : formation des pharmaciens, protocoles dans les clubs, accès facilité au conseil médical."
+  },
+  {
+    keys: ['recommandation','que faire','solution','améliorer','ameliorer','proposition'],
+    rep: "Notre étude formule trois recommandations prioritaires. 1) Le réflexe antidopage en officine : deux questions systématiques lors de toute délivrance d'AINS ou myorelaxants à un sportif (compétition prochaine ? autres médicaments ?). 2) Refus du diclofénac sans ordonnance — 57,3 % des automédiqués s'en approvisionnent ainsi. 3) Module antidopage obligatoire dans la formation des entraîneurs algériens. Ces recommandations sont concrètes, réalisables et ancrées dans nos données de terrain."
+  },
+  {
+    keys: ['hypothèse','hypothese','h1','h2','h3','h4','h5','confirmée','confirmee'],
+    rep: "Notre étude comprenait 5 hypothèses. H1 (AINS les plus utilisés) : ✅ confirmée — paracétamol 88,7 %, diclofénac 63,4 %. H2 (motivations de performance) : ✅ partiellement confirmée — 42 % des motivations relèvent de la performance. H3 (connaissance insuffisante des risques) : ✅ confirmée — 28,2 % jamais vérifié la liste AMA. H4 (pharmacien pas l'interlocuteur privilégié) : ✅ confirmée — 4ème position, 13,3 %. H5 (rôle limité à la délivrance) : ✅ partiellement confirmée — mais 21,7 % jugent le conseil satisfaisant."
+  },
+  {
+    keys: ['urgence','secours','grave','très mal','inconscient','malaise'],
+    rep: "⚠️ En cas d'urgence médicale, appelez le 14 (SAMU Algérie) ou rendez-vous immédiatement aux urgences. Cet assistant ne peut pas gérer les urgences. Ne tardez pas."
+  },
+  {
+    keys: ['dopage involontaire','contamination','sans le savoir','produit contaminé'],
+    rep: "Le dopage involontaire est une réalité documentée. Les substances interdites peuvent se cacher dans des produits banals : pseudoéphédrine dans les décongestionnants nasaux (interdite >150 µg/ml), éphédrine dans des compléments à base de plantes, DMAA dans des brûleurs de graisses, traces de SAA dans des compléments alimentaires contaminés. Duyar (2015) a documenté ce phénomène spécifiquement chez des sportifs licenciés algériens. Vérifiez toujours sur globaldro.com avant de consommer."
+  }
+];
+
+function getLocalResponse(msg) {
+  const m = msg.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  for (const entry of KB) {
+    if (entry.keys.some(k => m.includes(k.normalize('NFD').replace(/[\u0300-\u036f]/g,'')))) {
+      return entry.rep;
+    }
+  }
+  return null;
+}
+
+// ─── ASSISTANT IA ───
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  appendMessage('user', msg);
+  const typing = appendTyping();
+
+  // Délai réaliste
+  await new Promise(r => setTimeout(r, 900 + Math.random() * 600));
+
+  // Cherche réponse locale d'abord
+  const local = getLocalResponse(msg);
+  typing.remove();
+
+  if (local) {
+    appendMessage('bot', local);
+    return;
+  }
+
+  // Réponse générique intelligente si aucun mot-clé trouvé
+  const generic = [
+    "Votre question touche à un aspect que je ne couvre pas directement dans ma base de connaissances. Je vous recommande de consulter votre pharmacien ou de vérifier sur globaldro.com pour les questions antidopage. N'hésitez pas à reformuler votre question avec des mots-clés comme le nom du médicament ou du produit.",
+    "Je n'ai pas de réponse précise à cette question dans ma base actuelle. Pour les questions spécifiques sur les médicaments et le sport, votre pharmacien est la meilleure ressource — accessible sans rendez-vous. Vous pouvez aussi consulter la section 'Ressources' de ce site.",
+    "Cette question dépasse mes connaissances disponibles sur ce sujet précis. Consultez globaldro.com pour les questions antidopage, ou parlez directement à un pharmacien ou médecin du sport pour un conseil personnalisé."
+  ];
+  appendMessage('bot', generic[Math.floor(Math.random() * generic.length)]);
+}
+
+function sendQuick(text) {
+  document.getElementById('chatInput').value = text;
+  sendMessage();
+}
+
+function appendMessage(type, text) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `msg ${type}`;
+  div.innerHTML = `
+    <div class="msg-avatar">${type === 'bot' ? '\u271A' : '\uD83D\uDC64'}</div>
+    <div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>
+  `;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return div;
+}
+
+function appendTyping() {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.innerHTML = `
+    <div class="msg-avatar">\u271A</div>
+    <div class="msg-bubble">
+      <div class="typing-indicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>
+  `;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return div;
+}
+</script>
+</body>
+</html>
